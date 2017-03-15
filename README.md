@@ -24,7 +24,7 @@ You can also set:
 ```R
 correlation_type = "spearman"   ## use "pearson", "kendall", or "spearman" (default "pearson")
 annotate = T                    ## annotate file with gene names and biotype
-read.file = T                   ## will read in file, and assign it to global environment
+read.file = T                   ## will read in file, and assign it to global environment with name MYCN.cor.txt
 no_cores = 5                    ## default uses all cores - 1
 ```
 
