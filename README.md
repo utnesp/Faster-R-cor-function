@@ -1,8 +1,8 @@
 # Faster-R-cor-function
-Get correlation analysis done faster
+Get correlation analysis done faster.
 
 # Example
-Co-expression analysis of MYCN (ENSG00000134323) to find 
+Co-expression analysis of MYCN (ENSG00000134323) to find genes with strong correlation in a dataset containing 171 samples and 10 000 genes.
 
 ```R
 
@@ -25,7 +25,11 @@ You can also set:
 correlation_type = "spearman"   ## use "pearson", "kendall", or "spearman" (default "pearson")
 annotate = T                    ## annotate file with gene names and biotype
 read.file = T                   ## will read in file, and assign it to global environment
-no_cores = 5                    ## default used all cores - 1
+no_cores = 5                    ## default uses all cores - 1
 ```
+
+Should work in OSX. If you have troubles using it in another operating system, please ask me to provide you with a code which would work for you. The example her uses a set of gene expression values. You can also do correlation analysis in e.g. marketing.
+
+Good luck! :)
 
 Depends: foreach, doParallel
