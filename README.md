@@ -1,5 +1,5 @@
 # Faster-R-cor-function
-Get correlation analysis done faster.
+Get correlation analysis done faster when data.frame is BIG by using parallelization :) 
 
 # Example
 Co-expression analysis of MYCN (ENSG00000134323) to find genes with strong correlation in a dataset containing 171 samples and 10 000 genes.
