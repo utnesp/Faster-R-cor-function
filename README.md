@@ -32,4 +32,5 @@ Should work in OSX. If you have troubles using it in another operating system, p
 
 Good luck! :)
 
-Depends: foreach, doParallel
+Depends: foreach, doParallel, and
+https://github.com/utnesp/Easy-bioMart
