@@ -6,6 +6,7 @@ I started working on this when I painfully experienced that the in-built R cor()
 ```R
 devtools::install_github("utnesp/Easy-bioMart")
 devtools::install_github("utnesp/Faster-R-cor-function")
+library(corParallell)
 ```
 
 # Example
