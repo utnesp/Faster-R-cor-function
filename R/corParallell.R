@@ -99,7 +99,7 @@ cor.parallell <- function(df, gene_one_id, gene_list_ids = "", file = "test.txt"
     ## combine all files 
     system(paste("cat", file.cat, ">", file))
     ## clean up temp files
-    unlink(file.cat, force = T)
+    # unlink(file.cat, force = T)
     
     if (read.file == T || annotate == T) {
         assign.name <- gsub(paste(dirname(file), "/", sep = ""), "", file)
