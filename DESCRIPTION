@@ -1,10 +1,14 @@
 Package: corParallell
-Title: What the Package Does (one line, title case)
-Version: 0.0.0.9000
-Authors@R: person("First", "Last", email = "first.last@example.com", role = c("aut", "cre"))
-Description: What the package does (one paragraph).
+Title: Functions for corParallell
+Version: 0.1
+Authors@R: c(person("Peter Utnes", "Developer", role = c("aut", "cre"), email = "utnesp@gmail.com"))
+Description: https://github.com/utnesp/corParallell
 Depends: R (>= 3.3.2)
-License: What license is it under?
+License: GPL-3
 Encoding: UTF-8
 LazyData: true
+Maintainer: Peter Utnes <utnesp@gmail.com>
+Copyright: Peter Utnes <utnesp@gmail.com>
+Date: 2017-03-20
+URL: https://github.com/utnesp
 RoxygenNote: 6.0.1.9000

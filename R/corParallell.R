@@ -15,8 +15,6 @@
 #' @import doParallel
 #' @import easybiomart
 #' @examples
-#' cor.parallell()
-
 cor.parallell <- function(df, gene_one_id, gene_list_ids = "", file = "test.txt", correlation_type = "pearson", read.file = F, annotate = F, no_cores = "", use = "na.or.complete") {
     start = Sys.time()
     
@@ -92,14 +90,16 @@ cor.parallell <- function(df, gene_one_id, gene_list_ids = "", file = "test.txt"
     
     # file.cat <- gsub(paste(z, "temp.txt", sep = "_"), "*_temp.txt", file.rem)
     file.cat <- paste(file, '*', "temp.txt", sep = "_")
+    
     print("Number of correlations in temp files:")
-    system(paste("wc -l", file.cat))
+    tryCatch(system(paste("wc -l", file.cat)))
+    
     print(paste("Number of genes provided to this function:", length(gene_list_ids)))
     
     ## combine all files 
     system(paste("cat", file.cat, ">", file))
     ## clean up temp files
-    # unlink(file.cat, force = T)
+    unlink(file.cat, force = T)
     
     if (read.file == T || annotate == T) {
         assign.name <- gsub(paste(dirname(file), "/", sep = ""), "", file)
@@ -110,11 +110,14 @@ cor.parallell <- function(df, gene_one_id, gene_list_ids = "", file = "test.txt"
             t <- get(assign.name)
             colnames(t) <- c("correlation_type", "gene_name")
             
-            t <- ensg2ext_name_biotype(t$gene_name, combine = T)            
+            t <- ensg2ext_name_biotype(t$gene_name, combine = T)
             
             t <- t[order(-abs(t$correlation_type)), ]
             colnames(t) <- c("ensembl_gene_id", "external_gene_name", "gene_biotype", correlation_type)
             assign(assign.name, t, envir = .GlobalEnv)
+            
+            cat(assign.name, "assigned as object to .GlobalEnv\n")
+            
             rm(t)    
         } else {
             t <- get(assign.name)
