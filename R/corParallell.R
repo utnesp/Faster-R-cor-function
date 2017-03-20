@@ -17,7 +17,10 @@
 #' @import foreach
 #' @import doParallel
 #' @import easybiomart
-#' @examples cor.parallell(counts, "ENSG00000134323", file = "/path/to/file/MYCN.cor.txt"). \cr # Default mart \cr nif ( exists("mart") == "FALSE") { \cr    mart = useMart("ENSEMBL_MART_ENSEMBL", dataset='hsapiens_gene_ensembl') \cr }
+#' @examples cor.parallell(counts, "ENSG00000134323", file = "/path/to/file/MYCN.cor.txt"). \cr 
+#' # Default mart \cr nif ( exists("mart") == "FALSE") { \cr
+#'     mart = useMart("ENSEMBL_MART_ENSEMBL", dataset='hsapiens_gene_ensembl') \cr
+#' } \cr
 cor.parallell <- function(df, var, var.list = NULL, file = "test.txt", correlation_type = "pearson", read.file = F, annotate = F, no_cores = "", use = "na.or.complete") {
     start = Sys.time()
     
