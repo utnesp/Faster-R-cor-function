@@ -41,16 +41,24 @@ cor.parallell <- function(df, gene_one_id, gene_list_ids = "", file = "test.txt"
     }
     
     # Creates and overwrites file if it already exists
-    system(paste("mkdir -p", dirname(file)), ignore.stdout = T, ignore.stderr = T)
-    system(paste("trash", file), ignore.stdout = T, ignore.stderr = T)
-    file.create(file)
+    dir.create(dirname(file), showWarnings = F)
+    # system(paste("mkdir -p", dirname(file)), ignore.stdout = T, ignore.stderr = T)
+    # system(paste("trash", file), ignore.stdout = T, ignore.stderr = T) # on my own system I use this as it is more safe. 
+    # The trash command is similar to rm, but instead of deleting the file permanently it moves the file to the trash can.
+    # It is not in use here because not everybody is able to use this command. To implement this type of command create a
+    # sh file like this:
+        # #!/bin/bash
+        # mv "$@" /Users/put001/Desktop/Trashcan
+    # then create a symlink: ln -s trash /path/to/sh/file 
+    # make sure the symlink is in your $PATH
+    file.create(file, overwrite = T)
     
     nr_times = floor(nrow(df) / no_cores) - 1
     remainder = nrow(df) %% no_cores
     
     ## Clean-up any existing temp files
      for (i in 1:(no_cores+1)) {
-        tryCatch(system(paste("trash", paste(file, i, "temp.txt", sep = "_")), ignore.stdout = T, ignore.stderr = T))
+        tryCatch(unlink(paste(file, i, "temp.txt", sep = "_"), force = T))
     }
     
     for (i in 0:nr_times) {
@@ -90,7 +98,8 @@ cor.parallell <- function(df, gene_one_id, gene_list_ids = "", file = "test.txt"
     
     ## combine all files 
     system(paste("cat", file.cat, ">", file))
-    system(paste("trash", file.cat), ignore.stdout = T, ignore.stderr = T)
+    ## clean up temp files
+    unlink(file.cat, force = T)
     
     if (read.file == T || annotate == T) {
         assign.name <- gsub(paste(dirname(file), "/", sep = ""), "", file)
