@@ -31,9 +31,17 @@ cor.parallell(counts, "ENSG00000134323", file = "/path/to/file/MYCN.cor.txt")
 You can also set:
 ```R
 correlation_type = "spearman"   ## use "pearson", "kendall", or "spearman" (default "pearson")
-annotate = T                    ## annotate file with gene names and biotype
+annotate = T                    ## annotate file with gene names and biotype using easybiomart::ensg2ext_name
 read.file = T                   ## will read in file, and assign it to global environment with name MYCN.cor
 no_cores = 5                    ## default uses all cores - 1
+```
+
+If you try to annotate, then you need to get the [easybiomart package](https://github.com/utnesp/Easy-bioMart) as well as init a mart:
+```R
+# Default mart:
+if ( exists("mart") == "FALSE") {
+    mart = useMart("ENSEMBL_MART_ENSEMBL", dataset='hsapiens_gene_ensembl')
+}
 ```
 
 Good luck! :)
