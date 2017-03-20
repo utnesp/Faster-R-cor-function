@@ -27,7 +27,7 @@ cor.parallell <- function(df, var, var.list = NULL, file = "test.txt", correlati
     start = Sys.time()
     
     if (class(df) != "matrix") {
-        cat(paste("\nConverting ", class(df), "using as.matrix:", sep = ""))
+        cat(paste("\nConverting ", class(df), " using as.matrix:", sep = ""))
         cat(paste("\n> head(", class(df), ")\n", sep = ""))
         tryCatch(print(df[1:5, 1:5]))
         df <- as.matrix(df)
