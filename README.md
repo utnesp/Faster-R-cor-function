@@ -36,9 +36,5 @@ read.file = T                   ## will read in file, and assign it to global en
 no_cores = 5                    ## default uses all cores - 1
 ```
 
-Should work in OSX. If you have troubles using it in another operating system, please ask me to provide you with a code which would work for you. The example her uses a set of gene expression values. You can also do correlation analysis in e.g. marketing.
-
 Good luck! :)
 
-Depends: foreach, doParallel, and
-https://github.com/utnesp/Easy-bioMart
