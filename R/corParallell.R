@@ -103,6 +103,7 @@ cor.parallell <- function(df, gene_one_id, gene_list_ids = "", file = "test.txt"
     
     if (read.file == T || annotate == T) {
         assign.name <- gsub(paste(dirname(file), "/", sep = ""), "", file)
+        assign.name <- gsub(".txt", "", assign.name)
         assign(assign.name, read.delim(file, header = F))
         
         if (annotate == T) {
