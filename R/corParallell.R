@@ -110,7 +110,8 @@ cor.parallell <- function(df, gene_one_id, gene_list_ids = "", file = "test.txt"
             t <- get(assign.name)
             colnames(t) <- c("correlation_type", "gene_name")
             
-            t <- ensg2ext_name_biotype(t$gene_name, combine = T)
+            t2 <- ensg2ext_name_biotype(t$gene_name)
+            t <- merge(t2,t, by.x = "ensembl_gene_id", by.y="row.names)
             
             t <- t[order(-abs(t$correlation_type)), ]
             colnames(t) <- c("ensembl_gene_id", "external_gene_name", "gene_biotype", correlation_type)
