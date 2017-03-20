@@ -1,7 +1,10 @@
+## Created 2017-03-17
+## Authour: Peter Utnes
+## All rights reserved
+
 #' @title Faster R cor() function using parallellization
-#' 
-#' @description #' This function iterates one row at a time and then writes out each correlation to a file. It is done in a manner that requires low memory due to the fact that only one row is is read and calculated at a time, and each single correlation is then appended to a file (instead of heaping up in memory)
-#' 
+#' @author Peter Utnes \email{utnesp@gmail.com}
+#' @description #' This function iterates one row at a time and then writes out each correlation to a file. It is done in a manner that requires low memory due to the fact that only one row is is read and calculated at a time, and each single correlation is then appended to a file (instead of heaping up in memory).
 #' @param df a numeric data frame or matrix with rows and columns corresponding to variables and samples, respectively.
 #' @param var variable to correlation with. Must be part of df.
 #' @param var.list which variables to correlate to. Defaults to row.names.

@@ -4,27 +4,33 @@
 \alias{cor.parallell}
 \title{Faster R cor() function using parallellization}
 \usage{
-cor.parallell(df, gene_one_id, gene_list_ids = "", file = "test.txt",
+cor.parallell(df, var, var.list = NULL, file = "test.txt",
   correlation_type = "pearson", read.file = F, annotate = F,
   no_cores = "", use = "na.or.complete")
 }
 \arguments{
-\item{df}{Must be a data frame or matrix with row.names = gene names, colnames = samples}
+\item{df}{a numeric data frame or matrix with rows and columns corresponding to variables and samples, respectively.}
 
-\item{gene_one_id}{The variable to do the correlation with}
+\item{var}{variable to correlation with. Must be part of df.}
 
-\item{gene_list_ids}{Which variables to correlate to. Defaults to row.names}
+\item{var.list}{which variables to correlate to. Defaults to row.names.}
 
-\item{file}{Where to store the results}
+\item{file}{txt file for storing results}
 
-\item{correlation_type}{Correlation methods may be one of "pearson" (default), "kendall", "spearman".}
+\item{correlation_type}{correlation methods may be one of "pearson" (default), "kendall", "spearman".}
 
-\item{read.file}{Defaults to FALSE. If TRUE, then assigns object to global environment using the name specified in file}
+\item{read.file}{defaults to FALSE. If TRUE, then assigns object to global environment using the name specified in the file}
 
-\item{no_cores}{Number of cores used may be specified manually or it will be designated using all available cores - 1 (default)}
+\item{no_cores}{number of cores used may be specified manually or it will be designated using all available cores - 1 (default)}
 
 \item{use}{an optional character string giving a method for computing covariances in the presence of missing values. This must be (an abbreviation of) one of the strings "everything", "all.obs", "complete.obs", "na.or.complete", or "pairwise.complete.obs". See detailed description in ?cor}
 }
 \description{
-#' This function iterates one row at a time and then writes out each correlation to a file. It is done in a manner that requires low memory due to the fact that only one row is is read and calculated at a time, and each single correlation is then appended to a file (instead of heaping up in memory)
+#' This function iterates one row at a time and then writes out each correlation to a file. It is done in a manner that requires low memory due to the fact that only one row is is read and calculated at a time, and each single correlation is then appended to a file (instead of heaping up in memory).
+}
+\examples{
+cor.parallell(counts, "ENSG00000134323", file = "/path/to/file/MYCN.cor.txt")
+}
+\author{
+Peter Utnes \email{utnesp@gmail.com}
 }
