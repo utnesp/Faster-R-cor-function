@@ -6,7 +6,7 @@
 #' @author Peter Utnes \email{utnesp@gmail.com}
 #' @description #' This function iterates one row at a time and then writes out each correlation to a file. It is done in a manner that requires low memory due to the fact that only one row is is read and calculated at a time, and each single correlation is then appended to a file (instead of heaping up in memory).
 #' @param df a numeric data frame or matrix with rows and columns corresponding to variables and samples, respectively.
-#' @param var variable to correlation with. Must be part of df.
+#' @param var variable to do the correlation with. Must be part of df.
 #' @param var.list which variables to correlate to. Defaults to row.names.
 #' @param file txt file for storing results
 #' @param correlation_type correlation methods may be one of "pearson" (default), "kendall", "spearman". 
@@ -17,7 +17,7 @@
 #' @import foreach
 #' @import doParallel
 #' @import easybiomart
-#' @examples cor.parallell(counts, "ENSG00000134323", file = "/path/to/file/MYCN.cor.txt")
+#' @examples cor.parallell(counts, "ENSG00000134323", file = "/path/to/file/MYCN.cor.txt"). \cr # Default mart \cr nif ( exists("mart") == "FALSE") { \cr    mart = useMart("ENSEMBL_MART_ENSEMBL", dataset='hsapiens_gene_ensembl') \cr }
 cor.parallell <- function(df, var, var.list = NULL, file = "test.txt", correlation_type = "pearson", read.file = F, annotate = F, no_cores = "", use = "na.or.complete") {
     start = Sys.time()
     

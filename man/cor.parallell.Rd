@@ -29,12 +29,7 @@ cor.parallell(df, var, var.list = NULL, file = "test.txt",
 #' This function iterates one row at a time and then writes out each correlation to a file. It is done in a manner that requires low memory due to the fact that only one row is is read and calculated at a time, and each single correlation is then appended to a file (instead of heaping up in memory).
 }
 \examples{
-# Default mart:
-if ( exists("mart") == "FALSE") {
-    mart = useMart("ENSEMBL_MART_ENSEMBL", dataset='hsapiens_gene_ensembl')
-}
-  
-cor.parallell(counts, "ENSG00000134323", file = "/path/to/file/MYCN.cor.txt")
+cor.parallell(counts, "ENSG00000134323", file = "/path/to/file/MYCN.cor.txt"). \\cr # Default mart \\cr nif ( exists("mart") == "FALSE") { \\cr    mart = useMart("ENSEMBL_MART_ENSEMBL", dataset='hsapiens_gene_ensembl') \\cr }
 }
 \author{
 Peter Utnes \email{utnesp@gmail.com}
